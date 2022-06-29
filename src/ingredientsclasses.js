@@ -53,25 +53,4 @@ class BottomBunClass extends React.Component {
   }
 }
 
-class Burger extends React.Component {
-  render() {
-    const selectedIngredients = this.props.selectedIngredients;
-    return (
-      <div>
-        <div> My burger</div>
-        {/* {selectedIngredients.map((ingredient) => (
-          <CheeseClass />
-        ))} */}
-      </div>
-    );
-  }
-}
-
-export {
-  Burger,
-  CheeseClass,
-  BunClass,
-  TomatoClass,
-  LettuceClass,
-  BottomBunClass,
-};
+export { CheeseClass, BunClass, TomatoClass, LettuceClass, BottomBunClass };

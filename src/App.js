@@ -1,30 +1,19 @@
 import "./App.css";
 import React from "react";
-import { DisplayOrder, GenerateOrders } from "./utils.js";
+import { DisplayOrder, GenerateOrders } from "./orders.js";
 import {
   BunClass,
-  Burger,
   CheeseClass,
   LettuceClass,
   TomatoClass,
   BottomBunClass,
-} from "./burger.js";
-// import Countdown from "react-countdown";
+} from "./ingredientsclasses.js";
 import CountDown from "./CountdownTimer";
-import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  root: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-    border: 0,
-    borderRadius: 3,
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-  },
-});
+import { button } from "@material-ui/core";
+import Bun from "./images/TopBun.png";
+import Tomato from "./images/Tomato.png";
+import Lettuce from "./images/Lettuce.png";
+import Cheese from "./images/Cheese.png";
 
 class IngredientForm extends React.Component {
   constructor(props) {
@@ -33,7 +22,6 @@ class IngredientForm extends React.Component {
       selectedIngredient: "",
       selectedIngredients: [],
       order: GenerateOrders(),
-      // order: ["Bun", "Lettuce"],
       result: null,
       selectedIngredientsTally: {},
       topBunArray: [],
@@ -43,10 +31,10 @@ class IngredientForm extends React.Component {
       tomatoArray: [],
     };
     this.handleClick = this.handleClick.bind(this);
-    this.tallyIngredients = this.tallyIngredients.bind(this);
+    this.checkIngredients = this.checkIngredients.bind(this);
   }
 
-  tallyIngredients = () => {
+  checkIngredients = () => {
     let selectedIngredientsTally = {};
     for (let i = 0; i < this.state.selectedIngredients.length; i++) {
       if (
@@ -115,7 +103,6 @@ class IngredientForm extends React.Component {
   };
 
   render() {
-    const classes = useStyles();
     return (
       <div>
         <header>
@@ -124,15 +111,19 @@ class IngredientForm extends React.Component {
           <h3>
             Build me a <DisplayOrder order={this.state.order} />
           </h3>
-          <Button onClick={this.handleClick}>Bun</Button>
-          <Button onClick={this.handleClick}>Tomato</Button>
-          <Button onClick={this.handleClick}>Lettuce</Button>
-          <Button onClick={this.handleClick}>Cheese</Button>
-          <Button onClick={this.resetChoices}>Reset</Button>
-          {/* <Button onClick={this.handleClick}>Bottom Bun</Button> */}
-          {/* <Button className="BunButton">
-            <img src={BottomBun} alt="Bottom Bun" onClick={this.handleClick} />
-          </Button> */}
+          <button onClick={this.handleClick}>
+            Bun <img src={Bun} alt="Bun" className="BunIcon"></img>
+          </button>
+          <button onClick={this.handleClick}>
+            Tomato <img src={Tomato} alt="Tomato" className="TomatoIcon"></img>
+          </button>
+          <button onClick={this.handleClick}>
+            Lettuce <img src={Lettuce} alt="Lettuce" className="LettuceIcon" />
+          </button>
+          <button onClick={this.handleClick}>
+            Cheese <img src={Cheese} alt="Cheese" className="CheeseIcon" />
+          </button>
+          <button onClick={this.resetChoices}>Reset</button>
         </header>
 
         {/* <table>
@@ -147,7 +138,6 @@ class IngredientForm extends React.Component {
         </tbody>
       </table> */}
         <div className="burger">
-          <Burger selectedIngredients={this.state.selectedIngredients} />
           {this.state.topBunArray.map((ingredient) => (
             <div>
               <BunClass />
@@ -163,26 +153,16 @@ class IngredientForm extends React.Component {
           {this.state.cheeseArray.map((ingredient) => (
             <CheeseClass />
           ))}
-          {/* {this.state.bottomBunArray.map((ingredient) => (
-            <BottomBunClass />
-          ))} */}
         </div>
-        <Button onClick={this.tallyIngredients}>Tally Ingredients</Button>
+
+        <button onClick={this.checkIngredients}>Tally Ingredients</button>
         {this.state.result === true && (
           <div> You have made the correct order!</div>
         )}
         {this.state.result === false && (
           <div> You have made the incorrect order, try again!</div>
         )}
-
-        {/* <Countdown
-          date={Date.now() + 10000}
-          intervalDelay={0}
-          precision={3}
-          renderer={(props) => <div>{props.total}</div>}
-        /> */}
         <CountDown seconds={15} />
-        <Button className={classes.root}>Hook</Button>
       </div>
     );
   }

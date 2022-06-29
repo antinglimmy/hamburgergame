@@ -15,14 +15,6 @@ export const GenerateOrders = () => {
 class DisplayOrder extends React.Component {
   render() {
     let order = this.props.order;
-    // order = orders[Math.floor(Math.random() * orders.length)];
-
-    // for (let i = 0; i < order.length; i++) {
-    //   if (order[i] === "Cheese") {
-    //     order[i] = <img src={Cheese} alt="Cheese" /> + "Cheese";
-    //   }
-    // }  ["Cheese", "Bun", "Lettuce", "Tomato"],
-    //  ["Cheese", "Bun", "Cheese", "Tomato"]
     return order.map((item) => {
       if (item === "Cheese") {
         return (
@@ -65,39 +57,3 @@ class DisplayOrder extends React.Component {
 }
 
 export { DisplayOrder };
-// export const DisplayOrder = () => {
-//   let order = this.props.order;
-//   order = orders[Math.floor(Math.random() * orders.length)];
-
-//   for (let i = 0; i < order.length; i++) {
-//     if (order[i] === "Cheese") {
-//       order[i] = <img src={Cheese} alt="Cheese" /> + "Cheese";
-//     }
-//   }
-//   return order;
-// };
-
-// class generateOrders extends React.Component{
-//  constructor(props) {
-//     super(props);
-//     // Initialise component state to contain "date" attribute with current date and tim
-//   }
-// // const generateOrders = () => {
-
-//   const orders = [
-//     ["Bun", "Lettuce", "Tomato"],
-//     ["Bun", "Lettuce", "Lettuce", "Tomato"],
-//     ["Bun", "Bun", "Lettuce", "Tomato"],
-//   ]
-
-//   const randomNumber = Math.floor((Math.random() * 3) + 1);
-
-//   render() {
-//     return (
-//       orders[randomNumber]
-//   );
-
-//   }
-// }
-
-// export default orders
