@@ -1,0 +1,7 @@
+[
+  ["Bun", "Lettuce", "Tomato"],
+  ["Bun", "Lettuce", "Lettuce", "Tomato"],
+  ["Bun", "Bun", "Lettuce", "Tomato"],
+  ["Cheese", "Bun", "Lettuce", "Tomato"],
+  ["Cheese", "Bun", "Cheese", "Tomato"]
+]
