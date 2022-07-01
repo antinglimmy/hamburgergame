@@ -4,6 +4,10 @@ import Bun from "./images/TopBun.png";
 import Tomato from "./images/Tomato.png";
 import Lettuce from "./images/Lettuce.png";
 import BottomBun from "./images/BottomBun.png";
+import Bacon from "./images/Bacon.png";
+import Plate from "./images/Plate.png";
+import Pickles from "./images/Pickles.png";
+import Patty from "./images/Patty.png";
 import React from "react";
 import "./App.css";
 
@@ -28,6 +32,27 @@ class DisplayOrder extends React.Component {
           <div>
             <img src={Bun} alt="Bun" className="BunIcon" />
             <span>Bun</span>
+          </div>
+        );
+      } else if (item === "Pickles") {
+        return (
+          <div>
+            <img src={Pickles} alt="Pickles" className="PicklesIcon" />
+            <span>Pickles</span>
+          </div>
+        );
+      } else if (item === "Patty") {
+        return (
+          <div>
+            <img src={Patty} alt="Patty" className="PattyIcon" />
+            <span>Patty</span>
+          </div>
+        );
+      } else if (item === "Bacon") {
+        return (
+          <div>
+            <img src={Bacon} alt="Bacon" className="BaconIcon" />
+            <span>Bacon</span>
           </div>
         );
       } else if (item === "Lettuce") {

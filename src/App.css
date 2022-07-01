@@ -29,7 +29,28 @@
   width: 100px;
   z-index: -1;
   position: absolute;
-  top: 85px;
+  top: 115px;
+}
+.Plate {
+  height: 150;
+  width: 120px;
+  z-index: -2;
+  position: absolute;
+  top: 140px;
+}
+.Patty {
+  height: 150;
+  width: 100px;
+  z-index: -1;
+  position: absolute;
+  top: 105px;
+}
+.Pickles {
+  height: 150;
+  width: 100px;
+  z-index: -1;
+  position: absolute;
+  top: 95px;
 }
 .Tomato {
   height: 150;
@@ -37,6 +58,13 @@
   z-index: 4;
   position: absolute;
   top: 50px;
+}
+.Bacon {
+  height: 150;
+  width: 100px;
+  z-index: 1;
+  position: absolute;
+  top: 85px;
 }
 .Lettuce {
   height: 15%;
@@ -68,6 +96,21 @@
   display: inline;
 }
 .CheeseIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
+}
+.PicklesIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
+}
+.BaconIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
+}
+.PattyIcon {
   height: 15px;
   width: 30px;
   display: inline;

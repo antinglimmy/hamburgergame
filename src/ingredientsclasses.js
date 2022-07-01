@@ -4,6 +4,11 @@ import Tomato from "./images/Tomato.png";
 import Lettuce from "./images/Lettuce.png";
 import Cheese from "./images/Cheese.png";
 import BottomBun from "./images/BottomBun.png";
+import Bacon from "./images/Bacon.png";
+import Plate from "./images/Plate.png";
+import Pickles from "./images/Pickles.png";
+import Patty from "./images/Patty.png";
+
 import "./App.css";
 // import { GenerateOrders } from "./utils";
 
@@ -12,6 +17,42 @@ class CheeseClass extends React.Component {
     return (
       <div>
         <img src={Cheese} alt="cheese" className="Cheese" />
+      </div>
+    );
+  }
+}
+class BaconClass extends React.Component {
+  render() {
+    return (
+      <div>
+        <img src={Bacon} alt="Bacon" className="Bacon" />
+      </div>
+    );
+  }
+}
+class PicklesClass extends React.Component {
+  render() {
+    return (
+      <div>
+        <img src={Pickles} alt="Pickles" className="Pickles" />
+      </div>
+    );
+  }
+}
+class PattyClass extends React.Component {
+  render() {
+    return (
+      <div>
+        <img src={Patty} alt="Patty" className="Patty" />
+      </div>
+    );
+  }
+}
+class PlateClass extends React.Component {
+  render() {
+    return (
+      <div>
+        <img src={Plate} alt="Plate" className="Plate" />
       </div>
     );
   }
@@ -53,4 +94,14 @@ class BottomBunClass extends React.Component {
   }
 }
 
-export { CheeseClass, BunClass, TomatoClass, LettuceClass, BottomBunClass };
+export {
+  CheeseClass,
+  BunClass,
+  TomatoClass,
+  LettuceClass,
+  BottomBunClass,
+  PicklesClass,
+  PattyClass,
+  PlateClass,
+  BaconClass,
+};

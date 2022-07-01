@@ -7,6 +7,10 @@ import {
   LettuceClass,
   TomatoClass,
   BottomBunClass,
+  PattyClass,
+  PicklesClass,
+  BaconClass,
+  PlateClass,
 } from "./ingredientsclasses.js";
 import CountDown from "./CountdownTimer";
 import { button } from "@material-ui/core";
@@ -29,6 +33,10 @@ class IngredientForm extends React.Component {
       lettuceArray: [],
       cheeseArray: [],
       tomatoArray: [],
+      baconArray: [],
+      picklesArray: [],
+      pattyArray: [],
+      plateArray: [],
     };
     this.handleClick = this.handleClick.bind(this);
     this.checkIngredients = this.checkIngredients.bind(this);
@@ -85,6 +93,18 @@ class IngredientForm extends React.Component {
       this.setState((state) => ({
         bottomBunArray: [...state.bottomBunArray, "Bottom Bun"],
       }));
+    } else if (selectedIngredient2 === "Pickles") {
+      this.setState((state) => ({
+        picklesArray: [...state.picklesArray, "Pickles"],
+      }));
+    } else if (selectedIngredient2 === "Patty") {
+      this.setState((state) => ({
+        pattyArray: [...state.pattyArray, "Patty"],
+      }));
+    } else if (selectedIngredient2 === "Bacon") {
+      this.setState((state) => ({
+        baconArray: [...state.baconArray, "Bacon"],
+      }));
     }
     console.log(this.state);
   };
@@ -99,6 +119,10 @@ class IngredientForm extends React.Component {
       tomatoArray: [],
       cheeseArray: [],
       lettuceArray: [],
+      baconArray: [],
+      picklesArray: [],
+      pattyArray: [],
+      plateArray: [],
     }));
   };
 
@@ -111,18 +135,16 @@ class IngredientForm extends React.Component {
           <h3>
             Build me a <DisplayOrder order={this.state.order} />
           </h3>
-          <button onClick={this.handleClick}>
+          {/* <button onClick={this.handleClick}>
             Bun <img src={Bun} alt="Bun" className="BunIcon"></img>
-          </button>
-          <button onClick={this.handleClick}>
-            Tomato <img src={Tomato} alt="Tomato" className="TomatoIcon"></img>
-          </button>
-          <button onClick={this.handleClick}>
-            Lettuce <img src={Lettuce} alt="Lettuce" className="LettuceIcon" />
-          </button>
-          <button onClick={this.handleClick}>
-            Cheese <img src={Cheese} alt="Cheese" className="CheeseIcon" />
-          </button>
+          </button> */}
+          <button onClick={this.handleClick}>Bun</button>
+          <button onClick={this.handleClick}>Tomato</button>
+          <button onClick={this.handleClick}>Lettuce</button>
+          <button onClick={this.handleClick}>Cheese</button>
+          <button onClick={this.handleClick}>Bacon</button>
+          <button onClick={this.handleClick}>Pickles</button>
+          <button onClick={this.handleClick}>Patty</button>
           <button onClick={this.resetChoices}>Reset</button>
         </header>
 
@@ -142,6 +164,7 @@ class IngredientForm extends React.Component {
             <div>
               <BunClass />
               <BottomBunClass />
+              <PlateClass />
             </div>
           ))}
           {this.state.lettuceArray.map((ingredient) => (
@@ -152,6 +175,15 @@ class IngredientForm extends React.Component {
           ))}
           {this.state.cheeseArray.map((ingredient) => (
             <CheeseClass />
+          ))}
+          {this.state.pattyArray.map((ingredient) => (
+            <PattyClass />
+          ))}
+          {this.state.baconArray.map((ingredient) => (
+            <BaconClass />
+          ))}
+          {this.state.picklesArray.map((ingredient) => (
+            <PicklesClass />
           ))}
         </div>
 
