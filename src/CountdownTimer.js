@@ -1,15 +1,17 @@
 import React from "react";
+import AccessAlarmsIcon from "@mui/icons-material/AccessAlarms";
 
-const CountDown = ({ seconds = 0 }) => {
+const CountDown = ({ seconds = 0 }, props) => {
   const [over, setOver] = React.useState(false);
   const [[s], setTime] = React.useState([seconds]);
   const [timerClass, setTimerClass] = React.useState("");
+  // let submitOrder = this.props.submitOrder;
 
   const tick = () => {
     if (over) return;
     if (s === 0) {
       setOver(true);
-      setTimerClass("");
+      setTimerClass("timer");
     } else {
       setTime([s - 1]);
     }
@@ -22,6 +24,7 @@ const CountDown = ({ seconds = 0 }) => {
     setTime([parseInt(seconds)]);
     setOver(false);
     setTimerClass("");
+    console.log("has reset");
   };
 
   React.useEffect(() => {
@@ -30,10 +33,20 @@ const CountDown = ({ seconds = 0 }) => {
   });
 
   return (
-    <div>
-      <p className={timerClass}>{`${s.toString().padStart(1, "0")}`}</p>
-      <div>{over ? "Time's up, the customer has left!" : ""}</div>
-      <button onClick={() => reset()}>Restart</button>
+    <div className="timer">
+      <p>
+        {over === false && (
+          <p>
+            <AccessAlarmsIcon className="timerIcon" />
+            <span className="timeLeft">{`${s
+              .toString()
+              .padStart(1, "0")}`}</span>
+          </p>
+        )}
+      </p>
+      <p>{over ? "Time's up, the customer has left!" : ""}</p>
+      {/* <button onClick={() => reset()}>Restart</button> */}
+      {/* {submitOrder === true && reset()} */}
     </div>
   );
 };

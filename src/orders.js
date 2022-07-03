@@ -5,7 +5,6 @@ import Tomato from "./images/Tomato.png";
 import Lettuce from "./images/Lettuce.png";
 import BottomBun from "./images/BottomBun.png";
 import Bacon from "./images/Bacon.png";
-import Plate from "./images/Plate.png";
 import Pickles from "./images/Pickles.png";
 import Patty from "./images/Patty.png";
 import React from "react";

@@ -18,97 +18,86 @@
   color: white;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gameTitle {
+  text-align: center;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.orders {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  padding: 10px;
+  border: black solid 3px;
+
+  /* align-items: "center"; */
+  /* justify-content: "center"; */
+}
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ordersAndBurger {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+}
+
+.ingredients {
+  display: flex;
+  justify-content: center;
+}
+
+.otherGameButtons {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
 .Bun {
-  height: 150;
+  height: 50px;
+  top: 220px;
   width: 100px;
-  z-index: 6;
+  z-index: 7;
   position: absolute;
-}
-.BottomBun {
-  height: 150;
-  width: 100px;
-  z-index: -1;
-  position: absolute;
-  top: 115px;
-}
-.Plate {
-  height: 150;
-  width: 120px;
-  z-index: -2;
-  position: absolute;
-  top: 140px;
-}
-.Patty {
-  height: 150;
-  width: 100px;
-  z-index: -1;
-  position: absolute;
-  top: 105px;
-}
-.Pickles {
-  height: 150;
-  width: 100px;
-  z-index: -1;
-  position: absolute;
-  top: 95px;
-}
-.Tomato {
-  height: 150;
-  width: 100px;
-  z-index: 4;
-  position: absolute;
-  top: 50px;
-}
-.Bacon {
-  height: 150;
-  width: 100px;
-  z-index: 1;
-  position: absolute;
-  top: 85px;
-}
-.Lettuce {
-  height: 15%;
-  width: 100px;
-  z-index: 2;
-  position: absolute;
-  top: 60px;
-}
-.Cheese {
-  height: 15%;
-  width: 100px;
-  z-index: 1;
-  position: absolute;
-  top: 75px;
 }
 .BunIcon {
   height: 15px;
   width: 30px;
   display: inline;
 }
-.TomatoIcon {
-  height: 15px;
-  width: 30px;
-  display: inline;
+.BottomBun {
+  height: 50px;
+  width: 100px;
+  z-index: 0;
+  top: 300px;
+  position: absolute;
 }
-.LettuceIcon {
-  height: 15px;
-  width: 30px;
-  display: inline;
+.Plate {
+  height: 50px;
+  width: 120px;
+  z-index: -1;
+  top: 310px;
+  position: absolute;
 }
-.CheeseIcon {
-  height: 15px;
-  width: 30px;
-  display: inline;
-}
-.PicklesIcon {
-  height: 15px;
-  width: 30px;
-  display: inline;
-}
-.BaconIcon {
-  height: 15px;
-  width: 30px;
-  display: inline;
+
+.Patty {
+  height: 50px;
+  width: 100px;
+  z-index: -1;
+  top: 275px;
+  position: absolute;
 }
 .PattyIcon {
   height: 15px;
@@ -116,69 +105,69 @@
   display: inline;
 }
 
-.burger {
-  height: 300px;
-  position: relative;
+.Pickles {
+  height: 50px;
+  width: 100px;
+  z-index: 3;
+  top: 265px;
+  position: absolute;
+}
+.PicklesIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
+}
+
+.Tomato {
+  height: 50px;
+  width: 100px;
+  z-index: 4;
+  top: 255px;
+  position: absolute;
+}
+.TomatoIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
+}
+
+.Bacon {
+  height: 50px;
+  width: 100px;
+  top: 285px;
   z-index: 1;
+  position: absolute;
+}
+.BaconIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
 }
 
-.expired-notice {
-  text-align: center;
-  padding: 2rem;
-  border: 1px solid #ebebeb;
-  border-radius: 0.25rem;
-  margin: 0.5rem;
+.Lettuce {
+  height: 50px;
+  width: 100px;
+  z-index: 6;
+  top: 230px;
+  position: absolute;
+}
+.LettuceIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
 }
 
-.expired-notice > span {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: red;
+.Cheese {
+  height: 50px;
+  width: 100px;
+  z-index: 5;
+  top: 245px;
+  position: absolute;
 }
-
-.expired-notice > p {
-  font-size: 1.5rem;
-}
-
-.show-counter {
-  padding: 0.5rem;
-}
-
-.show-counter .countdown-link {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  padding: 0.5rem;
-  border: 1px solid #ebebeb;
-  border-radius: 0.25rem;
-  text-decoration: none;
-  color: #000;
-}
-
-.show-counter .countdown {
-  line-height: 1.25rem;
-  padding: 0 0.75rem 0 0.75rem;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.show-counter .countdown.danger {
-  color: #ff0000;
-}
-
-.show-counter .countdown > p {
-  margin: 0;
-}
-
-.show-counter .countdown > span {
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  line-height: 1rem;
+.CheeseIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
 }
 
 .BunButton {
@@ -187,4 +176,53 @@
 
 .timerWarning {
   color: red;
+  /* text-align: center;
+  padding: 2rem;
+  border: 1px solid #ebebeb;
+  border-radius: 0.25rem;
+  margin: 0.5rem; */
+  font-weight: bold;
+  text-align: center;
+}
+
+.timer {
+  display: inline-flex;
+  justify-content: center;
+  border: rgb(200, 110, 0) solid 2px;
+  border-radius: 60px;
+  padding: 10px;
+  margin: 20px;
+  width: 300px;
+  height: 50px;
+  background-color: orange;
+  align-items: center;
+  font-weight: bold;
+}
+
+.timeLeft {
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.timerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.earnings {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 20px;
+  width: 70px;
+  height: 50px;
+  background-color: orange;
+  justify-content: center;
+  border: rgb(200, 110, 0) solid 2px;
+  border-radius: 60px;
+  align-items: center;
+  font-weight: bold;
 }

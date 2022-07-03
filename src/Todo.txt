@@ -1,0 +1,10 @@
+Reset timer when submit order
+Refactor code, everything in state
+Add styling
+Make burger look nice
+Make burger expand as more ingredients are added
+Add score
+Add welcome and end page
+
+Update timer when click next order
+Why must click submit twice before order gets checked

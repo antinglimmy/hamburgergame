@@ -13,11 +13,21 @@ import {
   PlateClass,
 } from "./ingredientsclasses.js";
 import CountDown from "./CountdownTimer";
-import { button } from "@material-ui/core";
+import Button from "@mui/material/Button";
 import Bun from "./images/TopBun.png";
 import Tomato from "./images/Tomato.png";
 import Lettuce from "./images/Lettuce.png";
 import Cheese from "./images/Cheese.png";
+import background from "./images/Background.png";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ["Chilanka", "cursive"].join(","),
+  },
+});
 
 class IngredientForm extends React.Component {
   constructor(props) {
@@ -37,11 +47,19 @@ class IngredientForm extends React.Component {
       picklesArray: [],
       pattyArray: [],
       plateArray: [],
+      timeLeft: 15,
+      submitOrder: null,
+      earnings: 0,
     };
     this.handleClick = this.handleClick.bind(this);
     this.checkIngredients = this.checkIngredients.bind(this);
   }
 
+  checkAndUpdateResult = () => {
+    this.checkIngredients();
+    this.updateResult();
+    console.log(this.state);
+  };
   checkIngredients = () => {
     let selectedIngredientsTally = {};
     for (let i = 0; i < this.state.selectedIngredients.length; i++) {
@@ -64,7 +82,17 @@ class IngredientForm extends React.Component {
         this.setState({ result: false });
       }
     }
-    console.log(this.state);
+  };
+
+  updateResult = () => {
+    if (this.state.result === true) {
+      this.setState((state) => ({
+        submitOrder: true,
+        earnings: this.state.earnings + 5,
+      }));
+      console.log(this.state.earnings);
+      console.log(this.state.result);
+    }
   };
 
   handleClick = (event) => {
@@ -106,7 +134,6 @@ class IngredientForm extends React.Component {
         baconArray: [...state.baconArray, "Bacon"],
       }));
     }
-    console.log(this.state);
   };
 
   resetChoices = () => {
@@ -126,75 +153,97 @@ class IngredientForm extends React.Component {
     }));
   };
 
+  nextOrder = () => {
+    this.setState((state) => ({
+      order: GenerateOrders(),
+      selectedIngredients: [],
+      result: null,
+      selectedIngredientsTally: {},
+      topBunArray: [],
+      bottomBunArray: [],
+      tomatoArray: [],
+      cheeseArray: [],
+      lettuceArray: [],
+      baconArray: [],
+      picklesArray: [],
+      pattyArray: [],
+      plateArray: [],
+      timeLeft: 15,
+      submitOrder: null,
+    }));
+  };
   render() {
     return (
-      <div>
-        <header>
-          <h1 className="gameTitle">Burger Restaurant</h1>
-          {/* <h3>Build me a {this.state.order}</h3> */}
-          <h3>
-            Build me a <DisplayOrder order={this.state.order} />
-          </h3>
-          {/* <button onClick={this.handleClick}>
-            Bun <img src={Bun} alt="Bun" className="BunIcon"></img>
-          </button> */}
-          <button onClick={this.handleClick}>Bun</button>
-          <button onClick={this.handleClick}>Tomato</button>
-          <button onClick={this.handleClick}>Lettuce</button>
-          <button onClick={this.handleClick}>Cheese</button>
-          <button onClick={this.handleClick}>Bacon</button>
-          <button onClick={this.handleClick}>Pickles</button>
-          <button onClick={this.handleClick}>Patty</button>
-          <button onClick={this.resetChoices}>Reset</button>
-        </header>
-
-        {/* <table>
-        <tbody>
-          <tr>
-      <th>Ingredient List</th>
-    </tr>
-      {this.state.selectedIngredients.map((d, index) => (
-    <tr key={index}>
-      <td>{d}</td>
-        </tr>))}
-        </tbody>
-      </table> */}
-        <div className="burger">
-          {this.state.topBunArray.map((ingredient) => (
-            <div>
-              <BunClass />
-              <BottomBunClass />
-              <PlateClass />
+      <div style={{ backgroundImage: `url(${background})` }}>
+        <ThemeProvider theme={theme}>
+          <Typography component={"div"}>
+            {/* <h3>Build me a {this.state.order}</h3> */}
+            <h1 className="gameTitle">Burger Restaurant</h1>
+            <div className="header">
+              <CountDown seconds={15} submitOrder="true" />
+              <p className="earnings">
+                <MonetizationOnIcon />
+                {this.state.earnings}
+              </p>
             </div>
-          ))}
-          {this.state.lettuceArray.map((ingredient) => (
-            <LettuceClass />
-          ))}
-          {this.state.tomatoArray.map((ingredient) => (
-            <TomatoClass />
-          ))}
-          {this.state.cheeseArray.map((ingredient) => (
-            <CheeseClass />
-          ))}
-          {this.state.pattyArray.map((ingredient) => (
-            <PattyClass />
-          ))}
-          {this.state.baconArray.map((ingredient) => (
-            <BaconClass />
-          ))}
-          {this.state.picklesArray.map((ingredient) => (
-            <PicklesClass />
-          ))}
-        </div>
 
-        <button onClick={this.checkIngredients}>Tally Ingredients</button>
-        {this.state.result === true && (
-          <div> You have made the correct order!</div>
-        )}
-        {this.state.result === false && (
-          <div> You have made the incorrect order, try again!</div>
-        )}
-        <CountDown seconds={15} />
+            {/* <h3>Build me a {this.state.order}</h3> */}
+            <div className="ordersAndBurger">
+              <div className="orders">
+                Build me a <DisplayOrder order={this.state.order} />
+              </div>
+              <div className="burger">
+                {this.state.topBunArray.map((ingredient) => (
+                  <div>
+                    <BunClass />
+                    <BottomBunClass />
+                    {/* <PlateClass /> */}
+                  </div>
+                ))}
+                {this.state.lettuceArray.map((ingredient) => (
+                  <LettuceClass />
+                ))}
+                {this.state.tomatoArray.map((ingredient) => (
+                  <TomatoClass />
+                ))}
+                {this.state.cheeseArray.map((ingredient) => (
+                  <CheeseClass />
+                ))}
+                {this.state.pattyArray.map((ingredient) => (
+                  <PattyClass />
+                ))}
+                {this.state.baconArray.map((ingredient) => (
+                  <BaconClass />
+                ))}
+                {this.state.picklesArray.map((ingredient) => (
+                  <PicklesClass />
+                ))}
+              </div>
+            </div>
+            <div className="ingredients">
+              {/* <Button> New button</Button> */}
+              <button onClick={this.handleClick}>Bun</button>
+              <button onClick={this.handleClick}>Tomato</button>
+              <button onClick={this.handleClick}>Lettuce</button>
+              <button onClick={this.handleClick}>Cheese</button>
+              <button onClick={this.handleClick}>Bacon</button>
+              <button onClick={this.handleClick}>Pickles</button>
+              <button onClick={this.handleClick}>Patty</button>
+            </div>
+            <div className="otherGameButtons">
+              <button onClick={this.resetChoices}>Reset Ingredients</button>
+              <button onClick={this.nextOrder}>Next Order</button>
+              <button onClick={this.checkAndUpdateResult}>Submit Order</button>
+            </div>
+
+            {this.state.submitOrder === true && (
+              <div> You have made the correct order!</div>
+            )}
+            {this.state.submitOrder === false && (
+              <div> You have made the incorrect order, try again!</div>
+            )}
+          </Typography>
+        </ThemeProvider>
       </div>
     );
   }
