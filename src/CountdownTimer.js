@@ -1,7 +1,7 @@
 import React from "react";
 import AccessAlarmsIcon from "@mui/icons-material/AccessAlarms";
 
-const CountDown = ({ seconds = 0 }, props) => {
+const CountDown = ({ seconds = 0, nextOrder }) => {
   const [over, setOver] = React.useState(false);
   const [[s], setTime] = React.useState([seconds]);
   const [timerClass, setTimerClass] = React.useState("");
@@ -25,6 +25,7 @@ const CountDown = ({ seconds = 0 }, props) => {
     setOver(false);
     setTimerClass("");
     console.log("has reset");
+    nextOrder = false;
   };
 
   React.useEffect(() => {
@@ -32,8 +33,14 @@ const CountDown = ({ seconds = 0 }, props) => {
     return () => clearInterval(timerID);
   });
 
+  React.useEffect(() => {
+    nextOrder === true && reset();
+    console.log("i happen 2");
+  }, [nextOrder]);
+
   return (
     <div className="timer">
+      {console.log("i happen 3")}
       <p>
         {over === false && (
           <p>
@@ -46,7 +53,6 @@ const CountDown = ({ seconds = 0 }, props) => {
       </p>
       <p>{over ? "Time's up, the customer has left!" : ""}</p>
       {/* <button onClick={() => reset()}>Restart</button> */}
-      {/* {submitOrder === true && reset()} */}
     </div>
   );
 };

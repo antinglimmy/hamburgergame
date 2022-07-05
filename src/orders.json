@@ -1,11 +1,10 @@
 [
-  ["Bun", "Cheese", "Lettuce", "Patty", "Tomato"],
   ["Bun", "Lettuce", "Patty", "Pickles", "Tomato"],
-  ["Bun", "Bacon", "Cheese", "Lettuce", "Patty", "Pickles", "Tomato"],
+  ["Bun", "Bacon", "Cheese", "Patty", "Pickles", "Tomato"],
   ["Bun", "Bacon", "Cheese", "Lettuce", "Patty", "Tomato"],
   ["Bun", "Bacon", "Lettuce", "Patty", "Tomato"],
-  ["Bun", "Cheese", "Patty", "Tomato"],
-  ["Bun", "Bacon", "Cheese", "Lettuce"],
-  ["Bun", "Bacon", "Cheese", "Pickles"],
+  ["Bun", "Cheese", "Patty", "Pickles", "Tomato"],
+  ["Bun", "Bacon", "Cheese", "Lettuce", "Patty"],
+  ["Bun", "Bacon", "Cheese", "Pickles", "Tomato"],
   ["Bun", "Bacon", "Cheese", "Patty", "Pickles"]
 ]

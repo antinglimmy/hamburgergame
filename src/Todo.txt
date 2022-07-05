@@ -8,3 +8,4 @@ Add welcome and end page
 
 Update timer when click next order
 Why must click submit twice before order gets checked
+Add music?

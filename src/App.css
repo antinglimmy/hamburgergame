@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Chewy&family=Luckiest+Guy&display=swap");
+
 .App {
   text-align: center;
 }
@@ -18,6 +20,19 @@
   color: white;
 }
 
+.logo {
+  height: 60px;
+  display: flex;
+  position: relative;
+  left: -10px;
+}
+.background {
+  background-image: url("./images/background4.jpg");
+  background-size: cover;
+  position: relative;
+  top: 60px;
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -26,8 +41,13 @@
 }
 .gameTitle {
   text-align: center;
-  margin: 10px;
   font-weight: bold;
+  font-size: 40px;
+  color: orange;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 20px;
 }
 
 .orders {
@@ -35,7 +55,16 @@
   flex-direction: column;
   margin: 50px;
   padding: 10px;
-  border: black solid 3px;
+  border: rgb(247, 158, 50) solid 3px;
+  background-color: pink;
+  border-radius: 40px;
+  height: 240px;
+  width: 150px;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  left: -150px;
+  font-size: 25px;
 
   /* align-items: "center"; */
   /* justify-content: "center"; */
@@ -57,19 +86,24 @@
 .ingredients {
   display: flex;
   justify-content: center;
+  position: relative;
+  top: -20px;
 }
 
 .otherGameButtons {
   display: flex;
   justify-content: center;
   margin: 10px;
+  position: relative;
+  top: -20px;
 }
 
 .Bun {
-  height: 50px;
+  height: 100px;
   top: 220px;
-  width: 100px;
-  z-index: 7;
+  right: 510px;
+  width: 200px;
+  z-index: 10;
   position: absolute;
 }
 .BunIcon {
@@ -77,97 +111,99 @@
   width: 30px;
   display: inline;
 }
-.BottomBun {
-  height: 50px;
-  width: 100px;
-  z-index: 0;
-  top: 300px;
-  position: absolute;
-}
-.Plate {
-  height: 50px;
-  width: 120px;
-  z-index: -1;
-  top: 310px;
-  position: absolute;
-}
-
-.Patty {
-  height: 50px;
-  width: 100px;
-  z-index: -1;
-  top: 275px;
-  position: absolute;
-}
-.PattyIcon {
-  height: 15px;
-  width: 30px;
-  display: inline;
-}
-
-.Pickles {
-  height: 50px;
-  width: 100px;
-  z-index: 3;
-  top: 265px;
-  position: absolute;
-}
-.PicklesIcon {
-  height: 15px;
-  width: 30px;
-  display: inline;
-}
-
-.Tomato {
-  height: 50px;
-  width: 100px;
-  z-index: 4;
-  top: 255px;
-  position: absolute;
-}
-.TomatoIcon {
-  height: 15px;
-  width: 30px;
-  display: inline;
-}
-
-.Bacon {
-  height: 50px;
-  width: 100px;
-  top: 285px;
-  z-index: 1;
-  position: absolute;
-}
-.BaconIcon {
-  height: 15px;
-  width: 30px;
-  display: inline;
-}
-
 .Lettuce {
-  height: 50px;
-  width: 100px;
-  z-index: 6;
-  top: 230px;
+  height: 100px;
+  width: 200px;
+  z-index: 9;
+  top: 250px;
   position: absolute;
+  right: 510px;
 }
 .LettuceIcon {
   height: 15px;
   width: 30px;
   display: inline;
 }
-
 .Cheese {
-  height: 50px;
-  width: 100px;
-  z-index: 5;
-  top: 245px;
+  height: 100px;
+  width: 200px;
+  z-index: 8;
+  top: 270px;
   position: absolute;
+  right: 510px;
 }
 .CheeseIcon {
   height: 15px;
   width: 30px;
   display: inline;
+}
+.Patty {
+  height: 100px;
+  width: 200px;
+  z-index: 7;
+  top: 290px;
+  position: absolute;
+  right: 510px;
+}
+.PattyIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
+}
+.Tomato {
+  height: 100px;
+  width: 200px;
+  z-index: 6;
+  top: 310px;
+  position: absolute;
+  right: 510px;
+}
+.TomatoIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
+}
+.Pickles {
+  height: 100px;
+  width: 200px;
+  z-index: 5;
+  top: 350px;
+  position: absolute;
+  right: 510px;
+}
+.PicklesIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
+}
+.Bacon {
+  height: 100px;
+  width: 200px;
+  top: 365px;
+  z-index: 4;
+  position: absolute;
+  right: 510px;
+}
+.BaconIcon {
+  height: 15px;
+  width: 30px;
+  display: inline;
+}
+.BottomBun {
+  height: 100px;
+  width: 200px;
+  z-index: 3;
+  top: 380px;
+  position: absolute;
+  right: 510px;
+}
+.Plate {
+  height: 100px;
+  width: 220px;
+  z-index: 2;
+  top: 310px;
+  position: absolute;
+  right: 520px;
 }
 
 .BunButton {
@@ -188,15 +224,18 @@
 .timer {
   display: inline-flex;
   justify-content: center;
-  border: rgb(200, 110, 0) solid 2px;
   border-radius: 60px;
   padding: 10px;
   margin: 20px;
   width: 300px;
-  height: 50px;
-  background-color: orange;
+  height: 40px;
+  border: rgb(247, 158, 50) solid 3px;
+  background-color: pink;
   align-items: center;
   font-weight: bold;
+  font-size: 20px;
+  position: relative;
+  top: 20px;
 }
 
 .timeLeft {
@@ -218,11 +257,30 @@
   padding: 10px;
   margin: 20px;
   width: 70px;
-  height: 50px;
-  background-color: orange;
+  height: 40px;
+  border: rgb(247, 158, 50) solid 3px;
+  background-color: pink;
   justify-content: center;
-  border: rgb(200, 110, 0) solid 2px;
   border-radius: 60px;
   align-items: center;
   font-weight: bold;
+  font-size: 25px;
+  position: relative;
+  top: 20px;
+}
+
+.ingredientButton {
+  border: pink solid 3px;
+  background-color: rgb(247, 158, 50);
+  font-size: 20px;
+  margin: 3px;
+  border-radius: 10px;
+  font-family: Chewy;
+}
+
+.result {
+  text-align: center;
+  font-size: 25px;
+  position: relative;
+  top: -15px;
 }

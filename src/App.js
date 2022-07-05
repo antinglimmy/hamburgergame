@@ -18,14 +18,15 @@ import Bun from "./images/TopBun.png";
 import Tomato from "./images/Tomato.png";
 import Lettuce from "./images/Lettuce.png";
 import Cheese from "./images/Cheese.png";
-import background from "./images/Background.png";
+import background from "./images/background4.jpg";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import logo from "./images/logo2.png";
 
 const theme = createTheme({
   typography: {
-    fontFamily: ["Chilanka", "cursive"].join(","),
+    fontFamily: ["Chewy", "cursive"].join(","),
   },
 });
 
@@ -50,6 +51,7 @@ class IngredientForm extends React.Component {
       timeLeft: 15,
       submitOrder: null,
       earnings: 0,
+      nextOrder: null,
     };
     this.handleClick = this.handleClick.bind(this);
     this.checkIngredients = this.checkIngredients.bind(this);
@@ -57,7 +59,6 @@ class IngredientForm extends React.Component {
 
   checkAndUpdateResult = () => {
     this.checkIngredients();
-    this.updateResult();
     console.log(this.state);
   };
   checkIngredients = () => {
@@ -75,23 +76,29 @@ class IngredientForm extends React.Component {
     let sortedSelectedIngredients = this.state.selectedIngredients.sort();
     for (let i = 0; i < this.state.order.length; i++) {
       if (!(sortedSelectedIngredients[i] === this.state.order[i])) {
-        this.setState({ result: false });
+        this.setState({ result: false }, () => this.updateResult());
       } else if (sortedSelectedIngredients[i] === this.state.order[i]) {
-        this.setState({ result: true });
+        this.setState({ result: true }, () => this.updateResult());
       } else {
-        this.setState({ result: false });
+        this.setState({ result: false }, () => this.updateResult());
       }
     }
   };
 
   updateResult = () => {
     if (this.state.result === true) {
+      console.log("I happen");
       this.setState((state) => ({
         submitOrder: true,
+        nextOrder: null,
         earnings: this.state.earnings + 5,
       }));
-      console.log(this.state.earnings);
+      console.log(this.state.submitOrder);
       console.log(this.state.result);
+    } else {
+      this.setState((state) => ({
+        submitOrder: false,
+      }));
     }
   };
 
@@ -170,17 +177,22 @@ class IngredientForm extends React.Component {
       plateArray: [],
       timeLeft: 15,
       submitOrder: null,
+      nextOrder: true,
     }));
   };
   render() {
     return (
-      <div style={{ backgroundImage: `url(${background})` }}>
+      <div className="background">
         <ThemeProvider theme={theme}>
           <Typography component={"div"}>
             {/* <h3>Build me a {this.state.order}</h3> */}
-            <h1 className="gameTitle">Burger Restaurant</h1>
+            <div className="gameTitle">
+              {" "}
+              <img src={logo} alt="logo" className="logo"></img> Burger
+              Restaurant
+            </div>
             <div className="header">
-              <CountDown seconds={15} submitOrder="true" />
+              <CountDown seconds={15} nextOrder={this.state.nextOrder} />
               <p className="earnings">
                 <MonetizationOnIcon />
                 {this.state.earnings}
@@ -222,25 +234,54 @@ class IngredientForm extends React.Component {
             </div>
             <div className="ingredients">
               {/* <Button> New button</Button> */}
-              <button onClick={this.handleClick}>Bun</button>
-              <button onClick={this.handleClick}>Tomato</button>
-              <button onClick={this.handleClick}>Lettuce</button>
-              <button onClick={this.handleClick}>Cheese</button>
-              <button onClick={this.handleClick}>Bacon</button>
-              <button onClick={this.handleClick}>Pickles</button>
-              <button onClick={this.handleClick}>Patty</button>
+              <button onClick={this.handleClick} className="ingredientButton">
+                Bun
+              </button>
+              <button onClick={this.handleClick} className="ingredientButton">
+                Tomato
+              </button>
+              <button onClick={this.handleClick} className="ingredientButton">
+                Lettuce
+              </button>
+              <button onClick={this.handleClick} className="ingredientButton">
+                Cheese
+              </button>
+              <button onClick={this.handleClick} className="ingredientButton">
+                Bacon
+              </button>
+              <button onClick={this.handleClick} className="ingredientButton">
+                Pickles
+              </button>
+              <button onClick={this.handleClick} className="ingredientButton">
+                Patty
+              </button>
             </div>
             <div className="otherGameButtons">
-              <button onClick={this.resetChoices}>Reset Ingredients</button>
-              <button onClick={this.nextOrder}>Next Order</button>
-              <button onClick={this.checkAndUpdateResult}>Submit Order</button>
+              <button onClick={this.resetChoices} className="ingredientButton">
+                Reset Ingredients
+              </button>
+              <button onClick={this.nextOrder} className="ingredientButton">
+                Next Order
+              </button>
+              <button
+                onClick={this.checkAndUpdateResult}
+                className="ingredientButton"
+              >
+                Submit Order
+              </button>
             </div>
 
             {this.state.submitOrder === true && (
-              <div> You have made the correct order!</div>
+              <div className="result"> You have made the correct order!</div>
             )}
             {this.state.submitOrder === false && (
-              <div> You have made the incorrect order, try again!</div>
+              <div className="result">
+                {" "}
+                You have made the incorrect order, try again!
+              </div>
+            )}
+            {this.state.submitOrder === null && (
+              <div className="result"> Preparing the order...</div>
             )}
           </Typography>
         </ThemeProvider>
